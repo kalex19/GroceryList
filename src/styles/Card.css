@@ -1,0 +1,60 @@
+.card {
+  width: 90%;
+  color: white;
+  padding: 1%;
+  min-height: 200px;
+}
+
+.fruit-card {
+  background-color: goldenrod;
+}
+
+.dairy-card {
+  background-color: crimson;
+}
+
+.grains-card {
+  background-color: plum;
+}
+
+.homegoods-card {
+  background-color: lightseagreen;
+}
+
+.meat-card {
+  background-color: salmon;
+}
+
+.misc-card {
+  background-color: cornflowerblue;
+}
+
+.vegetables-card {
+  background-color: lightgreen;
+}
+
+
+.card-header {
+  font-size: 2em;
+  margin-top: 1%;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 1em;
+  color: white;
+  margin: 2%;
+}
+
+.checkbox {
+  width: 10%;
+  height: 15px;
+}
+
+.delete-card-btn {
+  border-radius: 50%;
+  height: 20px;
+  width: 15%;
+}
