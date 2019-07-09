@@ -5,37 +5,25 @@ import Container from './Container';
 
 class App extends Component {
 	state = {
-		fruit: [],
-		vegetables: [],
-		meat: [],
-		dairy: [],
-		grains: [],
-		misc: [],
-		homegoods: []
+		items: []
 	};
 
-	addItem = () => {
-		//if item category = fruit add it to the fruit array, if veg ad to veg array, etc
+	addItem = newItem => {
+		this.setState({ items: [ ...this.state.items, newItem ] });
 	};
 
-	markComplete = () => {
-		//toggle completed to mark off todo
+	markComplete = (id, category) => {
+		const item = this.state[category].find(item => item.id === id);
+		item.completed = !item.completed;
+		this.setState({ [category]: this.state[category] });
 	};
+
 	render() {
 		return (
 			<div className="App">
-				<h1 className="siteTitle">Grocery List</h1>
 				<Form addItem={this.addItem} />
-				<Container
-					fruit={this.state.fruit}
-					vegetables={this.state.vegetables}
-					meat={this.state.meat}
-					dairy={this.state.dairy}
-					grains={this.state.grains}
-					misc={this.state.misc}
-					homegoods={this.state.homegoods}
-					markComplete={this.markComplete}
-				/>
+				<h1 className="siteTitle">Grocery List</h1>
+				<Container items={this.state.items} complete={this.markComplete} />
 			</div>
 		);
 	}

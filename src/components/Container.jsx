@@ -1,22 +1,31 @@
 import React from 'react';
-import Fruit from './Fruit';
-import Vegetables from './Vegetables';
-import Meat from './Meat';
-import Dairy from './Dairy';
-import Grains from './Grains';
-import Misc from './Misc';
-import Homegoods from './Homegoods';
+import Card from './Card';
+import '../styles/Container.css';
 
-function Container({ fruit, vegetables, meat, dairy, grains, misc, homegoods }){
+function Container({ items, complete }){
+	const fruit = items.filter(item => item.category === 'fruit');
+	const vegetables = items.filter(item => item.category === 'vegetables');
+	const meat = items.filter(item => item.category === 'meat');
+	const dairy = items.filter(item => item.category === 'dairy');
+	const grains = items.filter(item => item.category === 'grains');
+	const misc = items.filter(item => item.category === 'misc');
+	const homegoods = items.filter(item => item.category === 'homegoods');
+
 	return (
-		<div>
-			<Fruit className="fruitCard" data={fruit} />
-			<Vegetables className="vegCard" data={vegetables} />
-			<Meat className="meatCard" data={meat} />
-			<Dairy className="dairyCard" data={dairy} />
-			<Grains className="grainCard" data={grains} />
-			<Misc className="miscCard" data={misc} />
-			<Homegoods className="homegoodsCard" data={homegoods} />
+		<div className="cardContainer">
+			{!items.length ? (
+				<h2 className="no-items-text">Please add items to a grocery list</h2>
+			) : (
+				<React.Fragment>
+					<Card items={fruit} category="fruit" complete={complete} />
+					<Card items={vegetables} category="vegetables" complete={complete} />
+					<Card items={meat} category="meat" complete={complete} />
+					<Card items={dairy} category="dairy" complete={complete} />
+					<Card items={grains} category="grains" complete={complete} />
+					<Card items={misc} category="misc" complete={complete} />
+					<Card items={homegoods} category="homegoods" complete={complete} />
+				</React.Fragment>
+			)}
 		</div>
 	);
 }
